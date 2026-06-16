@@ -41,4 +41,6 @@
   --md-ref-typeface-brand: "Roboto";
   --md-ref-typeface-plain: system-ui;
   font-family: var(--md-ref-typeface-brand);
+
+  --max-width-mobile: 600px;
 }
