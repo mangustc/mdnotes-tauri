@@ -20,6 +20,7 @@
     "@material/web": "^2.4.1",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
+    "sass": "^1.101.0",
     "solid-js": "^1.9.3"
   },
   "devDependencies": {

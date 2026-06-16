@@ -7,7 +7,20 @@ const host = process.env.TAURI_DEV_HOST;
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
   plugins: [solid()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+        loadPaths: ["node_modules"],
 
+        // Mute deprecation warnings coming from node_modules
+        quietDeps: true,
+
+        // Explicitly suppress warnings for deprecated features
+        silenceDeprecations: ["if-function", "import", "mixed-decls"],
+      },
+    },
+  },
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
   // 1. prevent vite from obscuring rust errors

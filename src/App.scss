@@ -1,0 +1,83 @@
+@use '@material/web/color/color';
+@use '@material/web/typography/typescale';
+@use '@material/web/typography/typeface';
+@use '@material/web/tokens';
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  src: url("/icons/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2") format("woff");
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+:root {
+  @include color.light-theme;
+
+  @media (prefers-color-scheme: dark) {
+    @include color.dark-theme;
+  }
+
+  @include typescale.theme(tokens.md-sys-typescale-values($exclude-custom-properties: true));
+  @include typeface.theme(tokens.md-ref-typeface-values($exclude-custom-properties: true));
+
+  --md-ref-typeface-brand: "Roboto";
+  --md-ref-typeface-plain: "Roboto";
+  font-family: var(--md-ref-typeface-brand);
+
+  --max-width-mobile: 600px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+}
+
+.desktop-app-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background-color: var(--md-sys-color-surface-container);
+}
