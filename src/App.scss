@@ -44,9 +44,9 @@
 :root {
   @include color.light-theme;
 
-  @media (prefers-color-scheme: dark) {
-    @include color.dark-theme;
-  }
+  // @media (prefers-color-scheme: dark) {
+  //   @include color.dark-theme;
+  // }
 
   @include typescale.theme(tokens.md-sys-typescale-values($exclude-custom-properties: true));
   @include typeface.theme(tokens.md-ref-typeface-values($exclude-custom-properties: true));
@@ -58,7 +58,7 @@
   --max-width-mobile: 600px;
 }
 
-* {
+body {
   margin: 0;
   padding: 0;
 }
@@ -80,4 +80,18 @@
   height: 48px;
   padding: 0 16px;
   background-color: var(--md-sys-color-surface-container);
+}
+
+.app-drawer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 300px;
+}
+
+.app-drawer-actions-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

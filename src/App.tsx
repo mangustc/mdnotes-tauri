@@ -16,14 +16,7 @@ function App() {
   return (
     <main class="app-container">
       <header data-tauri-drag-region class="desktop-app-bar">
-        <div
-          style={{
-            "background-color": "var(--md-sys-color-primary-container, red)",
-            "font-size": "var(--md-sys-typescale-body-medium-size, 400px)",
-          }}
-        >
-          My Notes
-        </div>
+        <span>My Notes</span>
         <div>
           <md-icon-button onClick={() => appWindow.minimize()}>
             <md-icon>remove</md-icon>
@@ -36,22 +29,30 @@ function App() {
           </md-icon-button>
         </div>
       </header>
-      <form
-        class="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <md-outlined-text-field
-          onChange={(e) => setName(e.currentTarget.value)}
-          label="Name"
-        />
-        <md-filled-icon-button type="submit">
-          <md-icon>send</md-icon>
-        </md-filled-icon-button>
-      </form>
-      <p>{greetMsg()}</p>
+      <div class="app-drawer">
+        <div></div>
+        <div class="app-drawer-actions">
+          <md-divider></md-divider>
+          <md-filled-tonal-button style="width: 100%;">
+            Create new note
+            <md-icon slot="icon">create</md-icon>
+          </md-filled-tonal-button>
+          <div class="app-drawer-actions-row">
+            <div class="app-drawer-actions-btn-group">
+              <md-filled-tonal-button>
+                Select project
+                <md-icon slot="icon">folder_open</md-icon>
+              </md-filled-tonal-button>
+              <md-filled-tonal-icon-button>
+                <md-icon>settings</md-icon>
+              </md-filled-tonal-icon-button>
+            </div>
+            <md-outlined-icon-button>
+              <md-icon>sync</md-icon>
+            </md-outlined-icon-button>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

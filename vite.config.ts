@@ -17,7 +17,7 @@ export default defineConfig(async () => ({
         quietDeps: true,
 
         // Explicitly suppress warnings for deprecated features
-        silenceDeprecations: ["if-function", "import", "mixed-decls"],
+        silenceDeprecations: ["if-function", "import"],
       },
     },
   },
