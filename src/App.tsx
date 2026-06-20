@@ -4,6 +4,8 @@ import { getCurrentWindow } from "@tauri-apps/api/window";
 import "beercss";
 import "material-dynamic-colors";
 import "./App.scss";
+import { AppError } from "./bindings/AppError";
+import { Settings } from "./bindings/Settings";
 
 function App() {
   const [greetMsg, setGreetMsg] = createSignal("");
@@ -11,7 +13,13 @@ function App() {
   const appWindow = getCurrentWindow();
 
   async function greet() {
-    setGreetMsg(await invoke("greet", { name: name() }));
+    try {
+      const msg = await invoke<Settings>("read");
+      setGreetMsg(msg.syncProvider);
+    } catch (e) {
+      const error = e as AppError;
+      console.log(error.type);
+    }
   }
 
   return (
@@ -41,11 +49,11 @@ function App() {
       </header>
       <main style="display: flex; flex-direction: row; width: 100vw; height: 100%; padding: 0;">
         <div style="display: flex; flex-direction: column; justify-content: space-between; width: 360px; height: 100%;">
-          <h3>search element</h3>
+          <h3>{greetMsg()}</h3>
           <div>
             <hr />
             <div style="padding: 16px">
-              <button class="tetriary responsive">
+              <button class="tetriary responsive" onClick={greet}>
                 <i>create</i>
                 Create new note
               </button>
