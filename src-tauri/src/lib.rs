@@ -1,3 +1,4 @@
+mod database;
 mod errors;
 mod models;
 
@@ -8,7 +9,7 @@ use sqlx::{
     sqlite::{SqliteConnectOptions, SqlitePoolOptions},
     SqlitePool,
 };
-use tauri::Manager;
+use tauri::{Manager, State};
 use tokio::sync::RwLock;
 
 use crate::{
@@ -53,9 +54,9 @@ async fn initialize_app_state(app: &tauri::App) -> Result<AppState, Box<dyn std:
 }
 
 #[tauri::command]
-fn read() -> Result<Settings, AppError> {
-    let data = Settings::default();
-    Ok(data)
+async fn read(state: State<'_, AppState>) -> Result<Settings, AppError> {
+    let settings_guard = state.settings.read().await;
+    Ok(settings_guard.clone())
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
