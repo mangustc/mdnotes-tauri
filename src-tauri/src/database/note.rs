@@ -1,5 +1,4 @@
 use crate::models::{SearchQuery, SortBy};
-use serde::{Deserialize, Serialize};
 use sqlx::SqliteExecutor;
 
 #[derive(Debug, Clone, sqlx::FromRow)]
