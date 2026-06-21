@@ -1,2 +1,3 @@
-pub mod link_previews;
-pub mod notes;
+pub mod link_preview;
+pub mod note;
+pub mod project;
